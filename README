@@ -1,7 +1,1 @@
 Asssumes installed python, numpy, sklearn
-
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/boyko11/ML3-UnsupervisedLearning.git
-git push -u origin master
