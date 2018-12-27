@@ -4,6 +4,7 @@ import data_service
 from sklearn.metrics import accuracy_score
 from sklearn.decomposition import PCA, FastICA
 from sklearn.random_projection import GaussianRandomProjection
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 def run_k_means(x_train, x_test, y_train, y_test):
 
@@ -60,3 +61,11 @@ x_train_RCA = rca.fit_transform(x_train.copy())
 x_test_RCA = rca.transform(x_test.copy())
 
 run_k_means(x_train_RCA, x_test_RCA, y_train, y_test)
+
+print("Applying LDA...")
+
+rca = LinearDiscriminantAnalysis(n_components=1)
+x_train_LDA = rca.fit_transform(x_train.copy(), y_train)
+x_test_LDA = rca.transform(x_test.copy())
+
+run_k_means(x_train_LDA, x_test_LDA, y_train, y_test)

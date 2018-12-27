@@ -1,5 +1,6 @@
 from sklearn.decomposition import PCA, FastICA
 from sklearn.random_projection import GaussianRandomProjection
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 import numpy as np
 import data_service
 from neural_network import NNLearner
@@ -26,7 +27,7 @@ nn_learning_rate_init = 0.01
 nn_solver = 'lbfgs'
 
 
-num_iter = 50
+num_iter = 5
 num_attributes = 30
 
 original_non_pca_scores = []
@@ -57,12 +58,14 @@ for a in range(num_iter):
             reduction_model = FastICA(n_components=i)
         elif reduction_algo == 'RCA':
             reduction_model = GaussianRandomProjection(n_components=i)
+        elif reduction_algo == 'LDA':
+            reduction_model = LinearDiscriminantAnalysis(n_components=i)
 
-        x_train_PCA = reduction_model.fit_transform(x_train.copy())
-        x_test_PCA = reduction_model.transform(x_test.copy())
+        x_train_transformed = reduction_model.fit_transform(x_train.copy(), y_train)
+        x_test_transformed = reduction_model.transform(x_test.copy())
 
         nn_accuracy_score_pca, nn_fit_time_pca, nn_predict_time_pca = \
-            nn_learner.fit_predict_score(x_train_PCA, y_train.copy(), x_test_PCA.copy(), y_test.copy())
+            nn_learner.fit_predict_score(x_train_transformed, y_train.copy(), x_test_transformed.copy(), y_test.copy())
 
         score_diff = nn_accuracy_score_pca - nn_accuracy_score
         fit_time_diff = nn_fit_time_pca - nn_fit_time
