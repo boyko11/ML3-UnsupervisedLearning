@@ -2,7 +2,8 @@ from sklearn.cluster import KMeans
 import numpy as np
 import data_service
 from sklearn.metrics import accuracy_score
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA, FastICA
+from sklearn.random_projection import GaussianRandomProjection
 
 def run_k_means(x_train, x_test, y_train, y_test):
 
@@ -43,3 +44,19 @@ x_train_PCA = pca.fit_transform(x_train.copy())
 x_test_PCA = pca.transform(x_test.copy())
 
 run_k_means(x_train_PCA, x_test_PCA, y_train, y_test)
+
+print("Applying ICA...")
+
+fastICA = FastICA(n_components=3, random_state=0)
+x_train_ICA = fastICA.fit_transform(x_train.copy())
+x_test_ICA = fastICA.transform(x_test.copy())
+
+run_k_means(x_train_ICA, x_test_ICA, y_train, y_test)
+
+print("Applying RCA...")
+
+rca = GaussianRandomProjection(n_components=26)
+x_train_RCA = rca.fit_transform(x_train.copy())
+x_test_RCA = rca.transform(x_test.copy())
+
+run_k_means(x_train_RCA, x_test_RCA, y_train, y_test)

@@ -1,9 +1,15 @@
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA, FastICA
+from sklearn.random_projection import GaussianRandomProjection
 import numpy as np
 import data_service
 from neural_network import NNLearner
 import plotting_service
+import sys
 
+if len(sys.argv) < 2:
+    print("Assuming PCA as data reduction algorithm.")
+
+reduction_algo = sys.argv[1].strip() if len(sys.argv) >= 2 else "PCA"
 
 scale_data = True
 transform_data = False
@@ -20,7 +26,7 @@ nn_learning_rate_init = 0.01
 nn_solver = 'lbfgs'
 
 
-num_iter = 100
+num_iter = 50
 num_attributes = 30
 
 original_non_pca_scores = []
@@ -43,9 +49,17 @@ for a in range(num_iter):
 
     matching_or_better_score_found = False
     for i in range(1,x_train.shape[1] + 1):
-        pca = PCA(n_components=i)
-        x_train_PCA = pca.fit_transform(x_train.copy())
-        x_test_PCA = pca.transform(x_test.copy())
+
+        reduction_model = None
+        if reduction_algo == 'PCA':
+            reduction_model = PCA(n_components=i)
+        elif reduction_algo == 'ICA':
+            reduction_model = FastICA(n_components=i)
+        elif reduction_algo == 'RCA':
+            reduction_model = GaussianRandomProjection(n_components=i)
+
+        x_train_PCA = reduction_model.fit_transform(x_train.copy())
+        x_test_PCA = reduction_model.transform(x_test.copy())
 
         nn_accuracy_score_pca, nn_fit_time_pca, nn_predict_time_pca = \
             nn_learner.fit_predict_score(x_train_PCA, y_train.copy(), x_test_PCA.copy(), y_test.copy())
@@ -66,7 +80,7 @@ mean_scores_per_number_pcs = np.mean(iter_pcs_scores, axis=0)
 print(original_non_pca_scores)
 print(np.mean(np.asarray(original_non_pca_scores)))
 
-plotting_service.plot_scores_per_pcs(mean_scores_per_number_pcs, np.mean(np.asarray(original_non_pca_scores)))
+plotting_service.plot_scores_per_pcs(mean_scores_per_number_pcs, np.mean(np.asarray(original_non_pca_scores)), reduction_algo)
 
 
 
