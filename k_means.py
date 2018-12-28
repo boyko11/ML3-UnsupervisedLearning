@@ -1,35 +1,65 @@
 from sklearn.cluster import KMeans
 import numpy as np
 import data_service
-from sklearn.metrics import accuracy_score
 from sklearn.decomposition import PCA, FastICA
 from sklearn.random_projection import GaussianRandomProjection
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
+
+def print_accuracy(y_labels, y_labels_clusterred, n_clusters):
+
+    cluster_labels=[[] for i in range(n_clusters)]
+    for i, j in enumerate(y_labels_clusterred):
+        cluster_labels[j].append(y_labels[i])
+
+    total_number_most_common_for_cluster = 0
+    for cluster in cluster_labels:
+        if len(cluster) == 0:
+            continue
+        unique_labels, unique_labels_counts = np.unique(np.asarray(cluster), return_counts=True)
+        # print(unique_labels)
+        # print(unique_labels_counts)
+        label_most_common_for_this_cluster = unique_labels[np.argmax(unique_labels_counts)]
+        #assuming most of records in the cluster are from the same class
+        num_records_for_most_common_label = np.max(unique_labels_counts)
+        total_number_most_common_for_cluster += num_records_for_most_common_label
+        print('Class {0}, Accuracy: {1}, Records for most common class: {2}, All Records: {3}, '
+              .format(label_most_common_for_this_cluster, num_records_for_most_common_label/(1.0 * len(cluster)),
+                num_records_for_most_common_label, len(cluster)))
+        print('ClassesAndCounts: {0}: '.format(dict(zip(unique_labels, unique_labels_counts))))
+        print('-------------------------------------------------')
+
+    print('Overall Accuracy: {0}'.format(total_number_most_common_for_cluster / (1.0 * y_labels.shape[0])))
+    print('-------------------------------------')
+
+
 def run_k_means(x_train, x_test, y_train, y_test):
 
-    kmeans = KMeans(n_clusters=2, random_state=None).fit(x_train)
+    n_clusters = np.unique(y_train).shape[0]
 
-    train_accuracy_score_1 = accuracy_score(y_train, kmeans.labels_)
-    train_accuracy_score_2 = accuracy_score(y_train, np.logical_not(kmeans.labels_))
+    k_means = KMeans(n_clusters=n_clusters, random_state=None).fit(x_train)
 
-    print("Train accuracy 1: {0}".format(train_accuracy_score_1))
-    print("Train accuracy 2: {0}".format(train_accuracy_score_2))
+    print("TRAINING:")
+    print_accuracy(y_train, k_means.labels_, n_clusters)
+    print("********** END TRAINING ************\n\n")
 
-    test_prediction = kmeans.predict(x_test)
-    if train_accuracy_score_2 > train_accuracy_score_1:
-        test_prediction = np.logical_not(test_prediction)
-
-    test_accuracy = accuracy_score(y_test, test_prediction)
-    print("Test Accuracy: {0}".format(test_accuracy))
+    print("TESTING:")
+    test_prediction = k_means.predict(x_test)
+    n_clusters = np.unique(y_test).shape[0]
+    print_accuracy(y_test, test_prediction, n_clusters)
+    print("********** END TESTING ************")
 
 
 scale_data = True
-transform_data = False
-random_slice = None
+transform_data = True
+random_slice = 25000
 random_seed = None
+test_size = 0.5
+
 dataset = 'breast_cancer'
-test_size = 0.2
+dataset = 'kdd'
+#dataset = 'covtype'
+
 
 x_train, x_test, y_train, y_test = data_service.\
     load_and_split_data(scale_data=scale_data, transform_data=transform_data, random_slice=random_slice,
@@ -37,6 +67,8 @@ x_train, x_test, y_train, y_test = data_service.\
 
 
 run_k_means(x_train, x_test, y_train, y_test)
+
+exit()
 
 print("Applying PCA...")
 

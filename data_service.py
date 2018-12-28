@@ -18,6 +18,8 @@ def load_data(scale_data=False, transform_data=False, random_slice=None, random_
         data = datasets.load_breast_cancer()
     elif dataset == 'kdd':
         data = datasets.fetch_kddcup99()
+    elif dataset == 'covtype':
+        data = datasets.fetch_covtype()
     #data = datasets.fetch_covtype()
 
     X = data.data
