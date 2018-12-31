@@ -1,7 +1,6 @@
 from sklearn import datasets,  model_selection, preprocessing
 import numpy as np
 
-
 def get_random_slice(dataset_name, random_slice, X, Y):
 
     if dataset_name != 'kdd':
@@ -53,32 +52,31 @@ def load_data(scale_data=False, transform_data=False, random_slice=None, random_
     Y = data.target
 
     distinct_labels, labels_record_counts = np.unique(Y, return_counts=True)
-    print(Y.shape[0])
 
-    print("Distinct Labels - {0}:".format(distinct_labels.shape[0]))
-    print(distinct_labels)
-    print("Distinct Labels Record Counts: ")
-    print(labels_record_counts)
-    print('-')
+    # print("Distinct Labels - {0}:".format(distinct_labels.shape[0]))
+    # print(distinct_labels)
+    # print("Distinct Labels Record Counts: ")
+    # print(labels_record_counts)
+    # print('-')
     #makes sure for kdd the labels always map to the same classes
     for label_index in range(distinct_labels.shape[0]):
         indices_for_this_label = np.where(Y == distinct_labels[label_index])
         Y[indices_for_this_label] = label_index
 
     distinct_labels, labels_record_counts = np.unique(Y, return_counts=True)
-    print(Y.shape[0])
-
-    print("Distinct Labels - {0}:".format(distinct_labels.shape[0]))
-    print(distinct_labels)
-    print("Distinct Labels Record Counts: ")
-    print(labels_record_counts)
-    print(np.histogram(Y, bins=np.arange(distinct_labels.shape[0]+1), density=True)[0])
-    print('--')
+    # print(Y.shape[0])
+    #
+    # print("Distinct Labels - {0}:".format(distinct_labels.shape[0]))
+    # print(distinct_labels)
+    # print("Distinct Labels Record Counts: ")
+    # print(labels_record_counts)
+    # print(np.histogram(Y, bins=np.arange(distinct_labels.shape[0]+1))[0])
+    # print('--')
 
 
     #np.savetxt("/home/btodorov/Desktop/foo.csv", X[np.random.choice(Y.shape[0], 1000, replace=False), :], delimiter=",")
 
-    ten_random_records = np.random.choice(Y.shape[0], 10, replace=False)
+    # ten_random_records = np.random.choice(Y.shape[0], 10, replace=False)
     # print(X[ten_random_records, :])
     # print('-----------------------------------------------')
     # print(Y[ten_random_records])
@@ -119,10 +117,10 @@ def load_data(scale_data=False, transform_data=False, random_slice=None, random_
         # print(np.var(X, axis=0))
         # print('2-----------------------------------------------')
 
-    unique_labels, unique_labels_counts = np.unique(Y, return_counts=True)
-    print("Unique classes labels and their record counts: ")
-    print(tuple(zip(unique_labels, unique_labels_counts)))
-    print("1Data Has {0} unique clusters".format(unique_labels.shape[0]))
+    # unique_labels, unique_labels_counts = np.unique(Y, return_counts=True)
+    # print("Unique classes labels and their record counts: ")
+    # print(tuple(zip(unique_labels, unique_labels_counts)))
+    # print("1Data Has {0} unique clusters".format(unique_labels.shape[0]))
 
     # if unique_labels.shape[0] > 2:
     #     three_most_prevelant_classes_indices = (-unique_labels_counts).argsort()[:3]
@@ -140,8 +138,4 @@ def load_data(scale_data=False, transform_data=False, random_slice=None, random_
     X_shuffled = X[shuffled_indices, :]
     Y_shuffled = Y[shuffled_indices]
 
-    unique_labels, unique_labels_counts = np.unique(Y_shuffled, return_counts=True)
-    print("Unique classes labels and their record counts shuffled: ")
-    print(tuple(zip(unique_labels, unique_labels_counts)))
-    print("2Data Has {0} unique clusters".format(unique_labels.shape[0]))
     return X_shuffled, Y_shuffled
