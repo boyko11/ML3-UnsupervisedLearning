@@ -8,22 +8,23 @@ import sys
 from tabulate import tabulate
 
 
-def update_avg_stats(class_stats, stats_avg, test_run_index):
+def update_avg_stats(class_stats, stats_avg, run_index):
 
     for this_index, this_class_stats in enumerate(class_stats):
 
         this_class_stats = np.asarray(this_class_stats)
-        if test_run_index > 0:
-
-            if this_index == 15:
-                print("Stopping for 15")
+        if run_index > 0:
 
             if np.count_nonzero(this_class_stats[1:5]) == 0:
-                #if all zeros for this test run, replcae with average from previous runs
-                this_class_stats[1:5] = stats_avg[this_index, 1:5] / test_run_index
+                #if all zeros for this test run, replace with average from previous runs
+                this_class_stats[1:5] = stats_avg[this_index, 1:5] / run_index
             if np.count_nonzero(stats_avg[this_index, 1:5]) == 0:
                 stats_avg[this_index, 1:5] = this_class_stats[1:5]
         stats_avg[this_index, :] += this_class_stats
+        if this_index == 15:
+            print('Class15: ', run_index, stats_avg[this_index, :])
+        if this_index == 17:
+            print('Class17: ', run_index, stats_avg[this_index, :])
 
     return stats_avg
 
@@ -115,7 +116,7 @@ if dataset == 'kdd':
     test_size = 0.5
     num_unique_classes = 23
 
-num_test_runs = 2
+num_test_runs = 5
 train_scores = []
 test_scores = []
 train_stats_avg = np.zeros((num_unique_classes, 6))
@@ -132,7 +133,7 @@ for test_run_index in range(num_test_runs):
     test_scores.append(test_score)
 
     train_stats_avg = update_avg_stats(class_train_stats, train_stats_avg, test_run_index)
-    test_stats_avg = update_avg_stats(class_test_stats, test_stats_avg, test_run_index)
+    #test_stats_avg = update_avg_stats(class_test_stats, test_stats_avg, test_run_index)
 
 
 avg_train_score = np.mean(np.asarray(train_scores))
