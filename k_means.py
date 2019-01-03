@@ -106,7 +106,7 @@ scale_data = True
 transform_data = False
 random_slice = None
 random_seed = None
-test_size = 0.2
+test_size = 0.5
 num_unique_classes = 2
 num_dimensions = 30
 
@@ -116,7 +116,7 @@ if dataset == 'kdd':
     test_size = 0.5
     num_unique_classes = 23
 
-num_test_runs = 5
+num_test_runs = 10
 train_scores = []
 test_scores = []
 train_stats_avg = np.zeros((num_unique_classes, 6))
@@ -133,7 +133,7 @@ for test_run_index in range(num_test_runs):
     test_scores.append(test_score)
 
     train_stats_avg = update_avg_stats(class_train_stats, train_stats_avg, test_run_index)
-    #test_stats_avg = update_avg_stats(class_test_stats, test_stats_avg, test_run_index)
+    test_stats_avg = update_avg_stats(class_test_stats, test_stats_avg, test_run_index)
 
 
 avg_train_score = np.mean(np.asarray(train_scores))
@@ -142,8 +142,15 @@ print("Pure KMeans Results:")
 print("Average Training Score: {0}".format(avg_train_score))
 print("Average Testing Score: {0}".format(avg_test_score))
 
-headers = ["Class", "Avg Score", "Avg Num of Clusters", "Avg Num of Majority in Cluster",
-           "Avg Num of All Records In Cluster", "Num of Non-Clusterred Records"]
+headers = ["Class", "ClusterScore", "Score", "NumOfClusters", "NumMajorityInCluster", "AllRecordsInCluster", "TrainRecords"]
+
+
+train_stats_avg = np.insert(train_stats_avg, 2, 0, axis=1)
+test_stats_avg = np.insert(test_stats_avg, 2, 0, axis=1)
+print(train_stats_avg.shape)
+print(train_stats_avg.shape)
+train_stats_avg[:, 2] = (train_stats_avg[:, 3] * train_stats_avg[:, 4])/ train_stats_avg[:, 6]
+test_stats_avg[:, 2] = (test_stats_avg[:, 3] * test_stats_avg[:, 4])/ test_stats_avg[:, 6]
 
 print("Avg per Class Training Stats:")
 train_stats_table = tabulate(train_stats_avg / num_test_runs, headers, tablefmt="simple")
