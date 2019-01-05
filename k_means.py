@@ -28,7 +28,7 @@ def update_avg_stats(class_stats, stats_avg, run_index):
 
     return stats_avg
 
-def generate_stats(y_labels, y_labels_clustered, n_clusters):
+def generate_stats(y_labels, y_labels_clustered, n_clusters, x_data):
     labels_prior_to_clustering = np.histogram(y_labels, bins=np.arange(n_clusters + 1))[0]
 
     class_accuracies = np.zeros(n_clusters)
@@ -36,15 +36,25 @@ def generate_stats(y_labels, y_labels_clustered, n_clusters):
     instances_per_clusters_per_class_count = np.zeros(n_clusters)
     majority_class_instances_per_clusters_per_class_count = np.zeros(n_clusters)
     cluster_labels = [[] for i in range(n_clusters)]
+    custer_train_indices = [[] for i in range(n_clusters)]
     for i, j in enumerate(y_labels_clustered):
         cluster_labels[j].append(y_labels[i])
+        custer_train_indices[j].append(i)
 
     total_number_most_common_for_cluster = 0
-    for cluster in cluster_labels:
+    for cluster_index, cluster in enumerate(cluster_labels):
         if len(cluster) == 0:
             continue
         unique_labels, unique_labels_counts = np.unique(np.asarray(cluster), return_counts=True)
         label_most_common_for_this_cluster = unique_labels[np.argmax(unique_labels_counts)]
+        cluster_train_indices_np = np.asarray(custer_train_indices[cluster_index])
+        cluster_y_labels = y_labels[cluster_train_indices_np]
+        cluster_x_train_records = x_data[cluster_train_indices_np, :]
+        label_most_common_train_indices = np.where(cluster_y_labels[cluster_y_labels == label_most_common_for_this_cluster])[0]
+        cluster_x_train_records_label_most_common = cluster_x_train_records[label_most_common_train_indices, :]
+        # if label_most_common_for_this_cluster == 11:
+        #     print("Normal stats: ")
+        #     print_attribute_stats(cluster_x_train_records_label_most_common)
         # assuming most of records in the cluster are from the same class
         num_records_for_most_common_label = np.max(unique_labels_counts)
         total_number_most_common_for_cluster += num_records_for_most_common_label
@@ -81,16 +91,32 @@ def run_k_means(x_train, x_test, y_train, y_test, n_clusters):
     k_means = KMeans(n_clusters=n_clusters, random_state=None).fit(x_train)
 
     print("TRAINING:")
-    overall_train_accuracy, train_stats_per_class = generate_stats(y_train, k_means.labels_, n_clusters)
+    overall_train_accuracy, train_stats_per_class = generate_stats(y_train, k_means.labels_, n_clusters, x_train)
     print("********** END TRAINING ************\n\n")
 
     print("TESTING:")
     test_prediction = k_means.predict(x_test)
-    overall_test_accuracy, test_stats_per_class = generate_stats(y_test, test_prediction, n_clusters)
+    overall_test_accuracy, test_stats_per_class = generate_stats(y_test, test_prediction, n_clusters, x_test)
 
     print("********** END TESTING ************")
 
     return overall_train_accuracy, train_stats_per_class, overall_test_accuracy, test_stats_per_class
+
+def print_attribute_stats(numpy_array):
+
+    min_stats = np.min(numpy_array, axis=0)
+    max_stats = np.max(numpy_array, axis=0)
+    mean_stats = np.mean(numpy_array, axis=0)
+    std_stats = np.std(numpy_array, axis=0)
+    print("MIN across attributes: ")
+    print(min_stats)
+    print("MAX across attributes: ")
+    print(max_stats)
+    print("MEAN across attributes: ")
+    print(mean_stats)
+    print("STD across attributes: ")
+    print(std_stats)
+    print('------------------------------')
 
 
 np.set_printoptions(suppress=True)
@@ -110,13 +136,18 @@ test_size = 0.5
 num_unique_classes = 2
 num_dimensions = 30
 
+reduce_kdd_to_binary = False
 if dataset == 'kdd':
     transform_data = True
     random_slice = None
     test_size = 0.5
     num_unique_classes = 23
+    if len(sys.argv) > 2:
+        reduce_kdd_to_binary = bool(sys.argv[2])
+        if reduce_kdd_to_binary:
+            num_unique_classes = 2
 
-num_test_runs = 10
+num_test_runs = 5
 train_scores = []
 test_scores = []
 train_stats_avg = np.zeros((num_unique_classes, 6))
@@ -125,6 +156,21 @@ for test_run_index in range(num_test_runs):
     x_train, x_test, y_train, y_test = data_service. \
         load_and_split_data(scale_data=scale_data, transform_data=transform_data, random_slice=random_slice,
                             random_seed=random_seed, dataset=dataset, test_size=test_size)
+
+    if dataset == 'kdd' and reduce_kdd_to_binary:
+        normal_train_indices = np.where(y_train == 9)[0]
+        non_normal_train_indices = np.where(y_train != 9)[0]
+        y_train[normal_train_indices] = 0
+        y_train[non_normal_train_indices] = 1
+        normal_test_indices = np.where(y_test == 9)[0]
+        non_normal_test_indices = np.where(y_test != 9)[0]
+        y_test[normal_test_indices] = 0
+        y_test[non_normal_test_indices] = 1
+
+        # smurf_indices = np.where(y_train == 18)[0]
+        # smurfs = x_train[smurf_indices, :]
+        # print("Smurfs stats: ")
+        # print_attribute_stats(smurfs)
 
     train_score, class_train_stats, test_score, class_test_stats = \
         run_k_means(x_train, x_test, y_train, y_test, num_unique_classes)
