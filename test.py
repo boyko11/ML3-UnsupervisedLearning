@@ -17,4 +17,11 @@ import numpy as np
 # dicted = dict(zipped)
 # print(dicted)
 
-print(np.random.choice(10, 10, replace=False))
+print(np.random.choice(10, 8, replace=False))
+
+# a = np.array([[1,4, 10, 0],
+#               [3,1, 0, 10]])
+#
+# a.sort(axis=0)
+#
+# print(a)

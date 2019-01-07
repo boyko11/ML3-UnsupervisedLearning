@@ -1,8 +1,5 @@
 import numpy as np
 import data_service
-from sklearn.decomposition import PCA, FastICA
-from sklearn.random_projection import GaussianRandomProjection
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 import sys
 from tabulate import tabulate
 import stats_util
@@ -10,7 +7,7 @@ import kmeans
 import em
 
 
-np.set_printoptions(suppress=True)
+np.set_printoptions(suppress=True, precision=3)
 if len(sys.argv) < 3 or (sys.argv[1] != 'kmeans' and sys.argv[1] != 'em') \
         or (sys.argv[2] != 'breast_cancer' and sys.argv[2] != 'kdd'):
     print("Usage: python cluster.py kmeans breast_cancer")
@@ -47,12 +44,12 @@ if dataset == 'kdd':
     random_slice = None
     test_size = 0.5
     num_unique_classes = 23
-    if len(sys.argv) > 2:
+    if len(sys.argv) > 3:
         reduce_kdd_to_binary = sys.argv[3] == 'binary'
         if reduce_kdd_to_binary:
             num_unique_classes = 2
 
-num_test_runs = 5
+num_test_runs = 1
 train_scores = []
 test_scores = []
 train_stats_avg = np.zeros((num_unique_classes, 6))
@@ -113,34 +110,34 @@ print(test_stats_table)
 
 exit()
 
-print("Applying PCA...")
-
-pca = PCA(n_components=10)
-x_train_PCA = pca.fit_transform(x_train.copy())
-x_test_PCA = pca.transform(x_test.copy())
-
-cluster_algo.run(x_train_PCA, x_test_PCA, y_train, y_test)
-
-print("Applying ICA...")
-
-fastICA = FastICA(n_components=3, random_state=0)
-x_train_ICA = fastICA.fit_transform(x_train.copy())
-x_test_ICA = fastICA.transform(x_test.copy())
-
-cluster_algo.run(x_train_ICA, x_test_ICA, y_train, y_test)
-
-print("Applying RCA...")
-
-rca = GaussianRandomProjection(n_components=26)
-x_train_RCA = rca.fit_transform(x_train.copy())
-x_test_RCA = rca.transform(x_test.copy())
-
-cluster_algo.run(x_train_RCA, x_test_RCA, y_train, y_test)
-
-print("Applying LDA...")
-
-rca = LinearDiscriminantAnalysis(n_components=1)
-x_train_LDA = rca.fit_transform(x_train.copy(), y_train)
-x_test_LDA = rca.transform(x_test.copy())
-
-cluster_algo.run(x_train_LDA, x_test_LDA, y_train, y_test)
+# print("Applying PCA...")
+#
+# pca = PCA(n_components=10)
+# x_train_PCA = pca.fit_transform(x_train.copy())
+# x_test_PCA = pca.transform(x_test.copy())
+#
+# cluster_algo.run(x_train_PCA, x_test_PCA, y_train, y_test)
+#
+# print("Applying ICA...")
+#
+# fastICA = FastICA(n_components=3, random_state=0)
+# x_train_ICA = fastICA.fit_transform(x_train.copy())
+# x_test_ICA = fastICA.transform(x_test.copy())
+#
+# cluster_algo.run(x_train_ICA, x_test_ICA, y_train, y_test)
+#
+# print("Applying RCA...")
+#
+# rca = GaussianRandomProjection(n_components=26)
+# x_train_RCA = rca.fit_transform(x_train.copy())
+# x_test_RCA = rca.transform(x_test.copy())
+#
+# cluster_algo.run(x_train_RCA, x_test_RCA, y_train, y_test)
+#
+# print("Applying LDA...")
+#
+# rca = LinearDiscriminantAnalysis(n_components=1)
+# x_train_LDA = rca.fit_transform(x_train.copy(), y_train)
+# x_test_LDA = rca.transform(x_test.copy())
+#
+# cluster_algo.run(x_train_LDA, x_test_LDA, y_train, y_test)

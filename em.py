@@ -20,6 +20,14 @@ def run(x_train, x_test, y_train, y_test, n_classes):
     train_prediction = em.predict(x_train)
     test_prediction = em.predict(x_test)
 
+    test_prediction_prob = em.predict_proba(x_test)
+    test_prediction_prob.sort(axis=0)
+    for this_index in range(test_prediction_prob.shape[1]):
+        this_column = test_prediction_prob[:, this_index]
+        this_column_over_point5 = this_column[this_column >= 0.5]
+        print('Class {0} softest probs: {1}'.format(this_index, this_column_over_point5[:10]))
+
+
     print("TRAINING:")
     overall_train_accuracy, train_stats_per_class = generate_stats(y_train, train_prediction, n_classes, x_train)
     print("********** END TRAINING ************\n\n")
