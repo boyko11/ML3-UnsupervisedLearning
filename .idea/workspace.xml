@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cd2a8b2-e191-4854-80c5-f4713e922463" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/PAC-1-KDD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PCA-2-kdd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PCA-3-KDD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reduce.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/em.py" beforeDir="false" afterPath="$PROJECT_DIR$/em.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,8 +80,8 @@
       <file leaf-file-name="plotting_service.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plotting_service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="67">
+              <caret line="24" column="71" lean-forward="true" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -164,15 +156,15 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find />
-      <find />
-      <find />
+      <find>Unique clas</find>
+      <find>Unique ins</find>
+      <find>Unique classes</find>
+      <find>Orig Ratio</find>
       <find>shuff</find>
       <find>2Data</find>
       <find>2D</find>
-      <find />
-      <find />
+      <find>Data Has</find>
+      <find>Data has</find>
       <find>2Dat</find>
       <find>shu</find>
       <find>train</find>
@@ -180,16 +172,16 @@
       <find>print</find>
       <find>tuple</find>
       <find>17</find>
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
+      <find>Class {</find>
+      <find>Class 21</find>
+      <find>Class 1</find>
+      <find>Class 21,</find>
+      <find>Class 1,</find>
+      <find>Class 15</find>
+      <find>Class 17</find>
+      <find>Class 2,</find>
+      <find>Class 3</find>
+      <find>Normal stats</find>
       <find>MIN</find>
       <find>Usage</find>
       <find>print_attribute_stats</find>
@@ -581,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546726164615</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Dimensinality Reduction - PCA - 1D, 2D, 3D scatter plots for 1 through 3 Principal Components">
+      <created>1546835626263</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1546835626263</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -589,20 +588,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1442" height="839" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.40851554" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="2" visible="true" weight="0.40756303" />
       <window_info anchor="bottom" id="Python Console" order="0" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.12605043" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.12605043" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.49942464" />
-      <window_info content_ui="combo" id="Project" order="5" weight="0.19375" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.19375" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="6" weight="0.32994652" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.4261745" />
-      <window_info active="true" anchor="right" id="SciView" order="8" visible="true" weight="0.3951389" />
+      <window_info anchor="right" id="SciView" order="8" visible="true" weight="0.3951389" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.32994652" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.46218488" />
@@ -658,6 +656,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -673,7 +697,8 @@
     <MESSAGE value="Calculate actual accuracy score in addition to the cluster accuracy score" />
     <MESSAGE value="K-Means almost complete" />
     <MESSAGE value="refactored code - use same stats for different clustering algos" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored code - use same stats for different clustering algos" />
+    <MESSAGE value="Dimensinality Reduction - PCA - 1D, 2D, 3D scatter plots for 1 through 3 Principal Components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dimensinality Reduction - PCA - 1D, 2D, 3D scatter plots for 1 through 3 Principal Components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1146,8 +1171,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plotting_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="67">
+          <caret line="24" column="71" lean-forward="true" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
