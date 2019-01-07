@@ -34,13 +34,13 @@ def plot3D_scatter(feature_data, labels, reduction_algo, dataset_name):
         indices_for_this_label = np.where(labels == unique_label)[0]
         records_for_this_label = feature_data[indices_for_this_label, :]
         ax.scatter(records_for_this_label[:, 0], records_for_this_label[:, 1], records_for_this_label[:, 2],
-                   c=colors[unique_label], marker=markers[unique_label], label="Class{0}".format(unique_label))
+                   c=colors[unique_label], marker=markers[unique_label], label="{0}".format(unique_label))
 
-    ax.set_xlabel('Component 1')
-    ax.set_ylabel('Component 2')
-    ax.set_zlabel('Component 3')
+    ax.set_xlabel('C1')
+    ax.set_ylabel('C2')
+    ax.set_zlabel('C3')
     plt.title("{0} - {1}".format(reduction_algo, dataset_name))
-    #plt.legend(loc='best', numpoints=1, ncol=15, fontsize=5, bbox_to_anchor=(0, 0))
+    plt.legend(loc='best', numpoints=1, ncol=2, fontsize=5, bbox_to_anchor=(0, 0))
     plt.show()
 
 def plot2D_scatter(feature_data, labels, reduction_algo, dataset_name):
@@ -53,12 +53,12 @@ def plot2D_scatter(feature_data, labels, reduction_algo, dataset_name):
         this_class_scatter = plt.scatter(feature_data[indices_for_this_label, 0], feature_data[indices_for_this_label, 1],
                     c=colors[unique_label], marker=markers[unique_label])
         scatters_per_class.append(this_class_scatter)
-        classes.append('Class{0}'.format(unique_label))
+        classes.append('{0}'.format(unique_label))
 
     plt.title("{0} - {1}".format(reduction_algo, dataset_name))
-    plt.xlabel("Component 1")
-    plt.ylabel("Component 2")
-    plt.legend(tuple(scatters_per_class), tuple(classes), scatterpoints=1, loc='best', ncol=9, fontsize=5)
+    plt.xlabel("C1")
+    plt.ylabel("C2")
+    plt.legend(tuple(scatters_per_class), tuple(classes), scatterpoints=1, loc='best', ncol=6, fontsize=5)
     plt.show()
 
 def plot1D_scatter(feature_data, labels, reduction_algo, dataset_name):

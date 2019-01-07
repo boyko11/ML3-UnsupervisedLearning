@@ -44,9 +44,9 @@ x_train, x_test, y_train, y_test = data_service. \
 
 
 if dataset_name == 'kdd':
-    random_indices = np.random.choice(y_train.shape[0], 10000, replace=False)
-    y_train = y_train[random_indices]
-    x_train = x_train[random_indices, :]
+    # random_indices = np.random.choice(y_train.shape[0], 10000, replace=False)
+    # y_train = y_train[random_indices]
+    # x_train = x_train[random_indices, :]
     if reduce_kdd_to_binary:
         normal_train_indices = np.where(y_train == 9)[0]
         non_normal_train_indices = np.where(y_train != 9)[0]
