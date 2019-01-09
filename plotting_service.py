@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# markers = [".", "^", "o", "v", "<", ">", "1", "2", "3", "4", "8", "s", "p", "P", "*", "h", "H", "+", "x", "X", "D",
-#            "d", "|"]
+markers = ["^", "o", "v", "<", ">", "1", "2", "3", "4", "*", "8", ".", "s",  "p", "P", "h", "H", "+", "x", "X", "D",
+           "d", "|"]
 
-markers = ["$0$", "$1$", "$2$", "$3$", "$4$", "$5$", "$6$", "$7$", "$8$", "$9$", "$10$", "$11$", "$12$", "$13$", "$14$", "$15$", "$16$", "$17$", "$18$", "$19$", "$20$", "$21$", "$22$", "$23$" ]
-colors = ["b", "g", "r", "c", "m", "y", "k", "b", "g", "C0", "r", "C1", "c", "m", "y", "k", "b", "r", "g", "c", "m", "y", "k", "b", "g", "r", "c", "m", "y", "k"]
+# markers = ["$0$", "$1$", "$2$", "$3$", "$4$", "$5$", "$6$", "$7$", "$8$", "$9$", "$10$", "$11$", "$12$", "$13$", "$14$", "$15$", "$16$", "$17$", "$18$", "$19$", "$20$", "$21$", "$22$", "$23$" ]
+colors = ["b", "g", "r", "c", "m", "y", "k", "b", "g", "C0", "r", "C1", "c", "m", "y", "k", "b", "g", "r", "c", "m", "y", "k", "b", "g", "r", "c", "m", "y", "k"]
 
 def plot_scores_per_pcs(accuracy_scores_per_pcs, original_accuracy, reduction_algo):
 
@@ -42,7 +42,7 @@ def plot3D_scatter(feature_data, labels, reduction_algo, dataset_name):
     ax.set_ylabel('C2')
     ax.set_zlabel('C3')
     plt.title("{0} - {1}".format(reduction_algo, dataset_name))
-    plt.legend(loc='best', numpoints=1, ncol=2, fontsize=5, bbox_to_anchor=(0, 0))
+    #plt.legend(loc='best', numpoints=1, ncol=2, fontsize=5, bbox_to_anchor=(0, 0))
     plt.show()
 
 def plot2D_scatter(feature_data, labels, reduction_algo, dataset_name):

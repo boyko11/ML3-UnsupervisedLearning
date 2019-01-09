@@ -59,9 +59,9 @@ if dataset_name == 'kdd':
 
 reduce_algo = None
 if reduce_algo_name == 'PCA':
-    reduce_algo = PCA(n_components=n_components)
+    reduce_algo = PCA(n_components=n_components, whiten=True)
 elif reduce_algo_name == 'ICA':
-    reduce_algo = FastICA(n_components=n_components)
+    reduce_algo = FastICA(n_components=n_components, whiten=True)
 elif reduce_algo_name == 'RCA':
     reduce_algo = GaussianRandomProjection(n_components=n_components)
 elif reduce_algo_name == 'LDA':
@@ -70,7 +70,7 @@ elif reduce_algo_name == 'LDA':
 x_train_reduced = reduce_algo.fit_transform(x_train.copy())
 x_test_reduced = reduce_algo.transform(x_test.copy())
 
-plotting_service.plot1D_scatter(x_train_reduced[:,:1], y_train, reduce_algo_name, dataset_name)
+#plotting_service.plot1D_scatter(x_train_reduced[:,:1], y_train, reduce_algo_name, dataset_name)
 plotting_service.plot2D_scatter(x_train_reduced[:,:2], y_train, reduce_algo_name, dataset_name)
 plotting_service.plot3D_scatter(x_train_reduced, y_train, reduce_algo_name, dataset_name)
 
