@@ -57,6 +57,7 @@ if dataset_name == 'kdd':
         y_test[normal_test_indices] = 0
         y_test[non_normal_test_indices] = 1
 
+#random marker - this is Boyko's work
 reduce_algo = None
 if reduce_algo_name == 'PCA':
     reduce_algo = PCA(n_components=n_components, whiten=True)

@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cd2a8b2-e191-4854-80c5-f4713e922463" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/ICA-KDD-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ICA-KDD-3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reduce.py" beforeDir="false" afterPath="$PROJECT_DIR$/reduce.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reduced_x_neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/reduced_x_neural_network.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +19,11 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ML3$k_means.coverage" NAME="cluster Coverage Results" MODIFIED="1546725077618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ML3$cluster.coverage" NAME="cluster Coverage Results" MODIFIED="1547040797166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ML3$cluster.coverage" NAME="cluster Coverage Results" MODIFIED="1547126288915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML3$pca.coverage" NAME="reduced_x_neural_network Coverage Results" MODIFIED="1545874333276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML3$plotting_service.coverage" NAME="plotting_service Coverage Results" MODIFIED="1545864561947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML3$test.coverage" NAME="test Coverage Results" MODIFIED="1546815418117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ML3$reduce.coverage" NAME="reduce Coverage Results" MODIFIED="1547000791095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ML3$reduce.coverage" NAME="reduce Coverage Results" MODIFIED="1547086527764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML3$em.coverage" NAME="em Coverage Results" MODIFIED="1546722673741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ML3$run_clustering.coverage" NAME="run_clustering Coverage Results" MODIFIED="1546725511696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -59,10 +61,58 @@
       <file leaf-file-name="cluster.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cluster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="69" lean-forward="true" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
+            <state relative-caret-position="158">
+              <caret line="174" column="34" lean-forward="true" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stats_util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats_util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="multiclass.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/utils/multiclass.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="76" column="33" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="519" selection-start-line="519" selection-end-line="519" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="discriminant_analysis.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/discriminant_analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="429" selection-start-line="429" selection-end-line="429" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reduced_x_neural_network.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reduced_x_neural_network.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="63" column="99" selection-start-line="63" selection-start-column="99" selection-end-line="63" selection-end-column="99" />
+              <folding>
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,8 +121,8 @@
       <file leaf-file-name="reduce.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reduce.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="67" column="15" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="15" />
+            <state relative-caret-position="132">
+              <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -83,7 +133,7 @@
       <file leaf-file-name="plotting_service.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plotting_service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
+            <state relative-caret-position="630">
               <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -95,7 +145,7 @@
       <file leaf-file-name="em.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/em.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
+            <state relative-caret-position="1140">
               <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -115,28 +165,25 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find>shuff</find>
-      <find>2Data</find>
       <find>2D</find>
-      <find />
-      <find />
+      <find>Data Has</find>
+      <find>Data has</find>
       <find>2Dat</find>
       <find>shu</find>
       <find>train</find>
       <find>np.isin</find>
       <find>tuple</find>
       <find>17</find>
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
+      <find>Class {</find>
+      <find>Class 21</find>
+      <find>Class 1</find>
+      <find>Class 21,</find>
+      <find>Class 1,</find>
+      <find>Class 15</find>
+      <find>Class 17</find>
+      <find>Class 2,</find>
+      <find>Class 3</find>
+      <find>Normal stats</find>
       <find>MIN</find>
       <find>Usage</find>
       <find>print_attribute_stats</find>
@@ -145,6 +192,9 @@
       <find>sys.argv</find>
       <find>print</find>
       <find>LDA</find>
+      <find>Boyk</find>
+      <find>apply_reduction_and_cluster_reduced_data</find>
+      <find>2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,7 +206,6 @@
         <option value="$PROJECT_DIR$/learner.py" />
         <option value="$PROJECT_DIR$/pca.py" />
         <option value="$PROJECT_DIR$/pca_neural_network.py" />
-        <option value="$PROJECT_DIR$/reduced_x_neural_network.py" />
         <option value="$PROJECT_DIR$/data_service.py" />
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/generate_stats_util.py" />
@@ -168,6 +217,7 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/plotting_service.py" />
         <option value="$PROJECT_DIR$/reduce.py" />
+        <option value="$PROJECT_DIR$/reduced_x_neural_network.py" />
         <option value="$PROJECT_DIR$/cluster.py" />
       </list>
     </option>
@@ -190,8 +240,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="447" />
     <option name="y" value="54" />
-    <option name="width" value="1072" />
-    <option name="height" value="702" />
+    <option name="width" value="1064" />
+    <option name="height" value="712" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -199,6 +249,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,11 +257,46 @@
               <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
               <item name="ML3" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (venv) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (venv) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (venv) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (venv) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="sklearn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ML3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (venv) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="sklearn" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -227,10 +313,10 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -261,7 +347,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cluster.py" />
-      <option name="PARAMETERS" value="kmeans 3 breast_cancer" />
+      <option name="PARAMETERS" value="kmeans 4 kdd" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -299,7 +385,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reduce.py" />
-      <option name="PARAMETERS" value="ICA breast_cancer 3" />
+      <option name="PARAMETERS" value="ICA kdd 3" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -560,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546866687877</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Run clustering(kmeans and em) after dimensionality reduction(PCA, ICA, RCA, LDA)">
+      <created>1547040938035</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1547040938035</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -568,23 +661,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1922" height="1019" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.40756303" />
       <window_info anchor="bottom" id="Python Console" order="0" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.5995526" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.31096196" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.49942464" />
-      <window_info content_ui="combo" id="Project" order="5" weight="0.103125" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.19479166" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="6" weight="0.32994652" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.4261745" />
-      <window_info anchor="right" id="SciView" order="8" weight="0.3875" />
+      <window_info anchor="right" id="SciView" order="8" weight="0.434375" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" weight="0.32994652" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.46218488" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.63982105" />
       <window_info id="Designer" order="0" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info id="Image Layers" order="4" />
@@ -601,38 +693,6 @@
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Designer" order="0" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="bottom" id="Python Console" order="0" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.5995526" />
-      <window_info id="Image Layers" order="4" />
-      <window_info anchor="right" id="Commander" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.24973261" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Favorites" order="3" side_tool="true" weight="0.32994652" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.49942464" />
-      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.40756303" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32994652" />
-      <window_info content_ui="combo" id="Project" order="5" weight="0.103125" />
-      <window_info anchor="right" id="SciView" order="8" weight="0.3875" />
-      <window_info anchor="right" id="Database" order="6" weight="0.32994652" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.4261745" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.46218488" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -691,7 +751,8 @@
     <MESSAGE value="Dimensinality Reduction - PCA - 1D, 2D, 3D scatter plots for 1 through 3 Principal Components" />
     <MESSAGE value="Dimensionality Reduction - PCA - 1D, 2D, 3D scatter plots for 1 through 3 Principal Components" />
     <MESSAGE value="Dimensionality Reduction - changes to plotting for hopefully better legibility" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dimensionality Reduction - changes to plotting for hopefully better legibility" />
+    <MESSAGE value="Run clustering(kmeans and em) after dimensionality reduction(PCA, ICA, RCA, LDA)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Run clustering(kmeans and em) after dimensionality reduction(PCA, ICA, RCA, LDA)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -729,7 +790,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="71" />
+      <option name="time" value="79" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -739,75 +800,53 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>label_most_common_train_indices</expression-string>
+        <expression-string>y</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.asarray(custer_train_indices[cluster_index])</expression-string>
+        <expression-string>y.dtype</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.asarray(custer_train_indices[3])</expression-string>
+        <expression-string>y.dtype == object</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.asarray(custer_train_indices[2])</expression-string>
+        <expression-string>string_types</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.asarray(custer_train_indices[1])</expression-string>
+        <expression-string>y.flat[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>custer_train_indices[cluster_index]</expression-string>
+        <expression-string>len(y)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>stats_avg[this_index, 1:5]</expression-string>
+        <expression-string>y.ndim &gt; 2</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>stats_avg[this_index, :]</expression-string>
+        <expression-string>_FN_UNIQUE_LABELS</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>stats_avg[21,:]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>this_class_stats[1:5]</expression-string>
+        <expression-string>np.unique(y_test_converted)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/reduced_x_neural_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/discriminant_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3978">
-          <caret line="249" column="8" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plotting_service.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -983,23 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/discriminant_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3978">
-          <caret line="249" column="8" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reduced_x_neural_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/cluster/k_means_.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1018,13 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="63" selection-start-column="63" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="43" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1078,9 +1093,7 @@
     <entry file="file://$PROJECT_DIR$/ScorePerPC.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PCA1KDD.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PCA1KDD.png" />
     <entry file="file://$PROJECT_DIR$/PCA-3-KDD.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1092,7 +1105,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/em.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
+        <state relative-caret-position="1140">
           <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -1102,7 +1115,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plotting_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="630">
           <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -1112,18 +1125,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reduce.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" column="15" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="15" />
+        <state relative-caret-position="132">
+          <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/reduced_x_neural_network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="63" column="99" selection-start-line="63" selection-start-column="99" selection-end-line="63" selection-end-column="99" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/discriminant_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="429" selection-start-line="429" selection-end-line="429" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="519" selection-start-line="519" selection-end-line="519" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ML1/venv/lib/python3.6/site-packages/sklearn/utils/multiclass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cluster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="69" lean-forward="true" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
+        <state relative-caret-position="158">
+          <caret line="174" column="34" lean-forward="true" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

@@ -10,7 +10,8 @@ from sklearn.random_projection import GaussianRandomProjection
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 
-def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, cluster_algo, x_train, x_test, y_train, y_test, num_unique_classes):
+def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, cluster_algo, x_train, x_test, y_train,
+                                             y_test, num_unique_classes, dataset_name):
 
     reduce_algo = None
     if reduce_algo_name == 'PCA':
@@ -23,12 +24,32 @@ def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, clu
         reduce_algo = LinearDiscriminantAnalysis(n_components=n_components)
 
     if reduce_algo_name == 'LDA':
+        # if dataset_name == 'kdd':
+        #     y_train_converted, y_test_converted = convert_kdd_to_binary(y_train, y_test)
+        #     x_train_reduced = reduce_algo.fit_transform(x_train, y_train_converted)
+        #     x_test_reduced = reduce_algo.transform(x_test)
+        #     return cluster_algo.run(x_train_reduced, x_test_reduced, y_train_converted, y_test_converted, 2)
+        # else:
         x_train_reduced = reduce_algo.fit_transform(x_train, y_train)
     else:
         x_train_reduced = reduce_algo.fit_transform(x_train)
     x_test_reduced = reduce_algo.transform(x_test)
 
     return cluster_algo.run(x_train_reduced, x_test_reduced, y_train, y_test, num_unique_classes)
+
+
+def convert_kdd_to_binary(y_train, y_test):
+
+    normal_train_indices = np.where(y_train == 9)[0]
+    non_normal_train_indices = np.where(y_train != 9)[0]
+    y_train[normal_train_indices] = 0
+    y_train[non_normal_train_indices] = 1
+    normal_test_indices = np.where(y_test == 9)[0]
+    non_normal_test_indices = np.where(y_test != 9)[0]
+    y_test[normal_test_indices] = 0
+    y_test[non_normal_test_indices] = 1
+
+    return y_train.astype(np.int64), y_test.astype(np.int64)
 
 
 def print_stats(train_scores, test_scores, train_stats_avg, test_stats_avg, num_test_runs):
@@ -102,7 +123,7 @@ if dataset == 'kdd':
 
 print(algo_to_run, n_components, dataset, 'binary' if reduce_kdd_to_binary else '')
 
-num_test_runs = 10
+num_test_runs = 3
 train_scores = []
 test_scores = []
 train_stats_avg = np.zeros((num_unique_classes, 6))
@@ -135,14 +156,7 @@ for test_run_index in range(num_test_runs):
                             random_seed=random_seed, dataset=dataset, test_size=test_size)
 
     if dataset == 'kdd' and reduce_kdd_to_binary:
-        normal_train_indices = np.where(y_train == 9)[0]
-        non_normal_train_indices = np.where(y_train != 9)[0]
-        y_train[normal_train_indices] = 0
-        y_train[non_normal_train_indices] = 1
-        normal_test_indices = np.where(y_test == 9)[0]
-        non_normal_test_indices = np.where(y_test != 9)[0]
-        y_test[normal_test_indices] = 0
-        y_test[non_normal_test_indices] = 1
+        y_train, y_test = convert_kdd_to_binary(y_train.copy(), y_test.copy())
 
         # smurf_indices = np.where(y_train == 18)[0]
         # smurfs = x_train[smurf_indices, :]
@@ -161,28 +175,32 @@ for test_run_index in range(num_test_runs):
     print("Applying Reduction...")
 
     train_score_reduced_PCA, class_train_stats_reduced_PCA, test_score_reduced_PCA, class_test_stats_reduced_PCA = \
-        apply_reduction_and_cluster_reduced_data('PCA', n_components, cluster_algo, x_train.copy(), x_test.copy(), y_train, y_test, num_unique_classes)
+        apply_reduction_and_cluster_reduced_data('PCA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+                                                 y_train, y_test, num_unique_classes, dataset)
     train_scores_PCA.append(train_score_reduced_PCA)
     test_scores_PCA.append(test_score_reduced_PCA)
     train_stats_avg_PCA = stats_util.update_avg_stats(class_train_stats_reduced_PCA, train_stats_avg_PCA, test_run_index)
     test_stats_avg_PCA = stats_util.update_avg_stats(class_test_stats_reduced_PCA, test_stats_avg_PCA, test_run_index)
 
     train_score_reduced_ICA, class_train_stats_reduced_ICA, test_score_reduced_ICA, class_test_stats_reduced_ICA = \
-        apply_reduction_and_cluster_reduced_data('ICA', n_components, cluster_algo, x_train.copy(), x_test.copy(), y_train, y_test, num_unique_classes)
+        apply_reduction_and_cluster_reduced_data('ICA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+                                                 y_train, y_test, num_unique_classes, dataset)
     train_scores_ICA.append(train_score_reduced_ICA)
     test_scores_ICA.append(test_score_reduced_ICA)
     train_stats_avg_ICA = stats_util.update_avg_stats(class_train_stats_reduced_ICA, train_stats_avg_ICA, test_run_index)
     test_stats_avg_ICA = stats_util.update_avg_stats(class_test_stats_reduced_ICA, test_stats_avg_ICA, test_run_index)
 
     train_score_reduced_RCA, class_train_stats_reduced_RCA, test_score_reduced_RCA, class_test_stats_reduced_RCA = \
-        apply_reduction_and_cluster_reduced_data('RCA', n_components, cluster_algo, x_train.copy(), x_test.copy(), y_train, y_test, num_unique_classes)
+        apply_reduction_and_cluster_reduced_data('RCA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+                                                 y_train, y_test, num_unique_classes, dataset)
     train_scores_RCA.append(train_score_reduced_RCA)
     test_scores_RCA.append(test_score_reduced_RCA)
     train_stats_avg_RCA = stats_util.update_avg_stats(class_train_stats_reduced_RCA, train_stats_avg_RCA, test_run_index)
     test_stats_avg_RCA = stats_util.update_avg_stats(class_test_stats_reduced_RCA, test_stats_avg_RCA, test_run_index)
 
     train_score_reduced_LDA, class_train_stats_reduced_LDA, test_score_reduced_LDA, class_test_stats_reduced_LDA = \
-        apply_reduction_and_cluster_reduced_data('LDA', n_components, cluster_algo, x_train.copy(), x_test.copy(), y_train, y_test, num_unique_classes)
+        apply_reduction_and_cluster_reduced_data('LDA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+                                                 y_train.astype(np.int64), y_test.astype(np.int64), num_unique_classes, dataset)
     train_scores_LDA.append(train_score_reduced_LDA)
     test_scores_LDA.append(test_score_reduced_LDA)
     train_stats_avg_LDA = stats_util.update_avg_stats(class_train_stats_reduced_LDA, train_stats_avg_LDA, test_run_index)

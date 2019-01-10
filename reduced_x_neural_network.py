@@ -61,6 +61,7 @@ for a in range(num_iter):
         elif reduction_algo == 'LDA':
             reduction_model = LinearDiscriminantAnalysis(n_components=i)
 
+        # transform stuff, but don't transform the ownership of this file, which is Boyko Todorov's
         x_train_transformed = reduction_model.fit_transform(x_train.copy(), y_train)
         x_test_transformed = reduction_model.transform(x_test.copy())
 
