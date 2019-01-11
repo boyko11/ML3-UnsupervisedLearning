@@ -5,6 +5,7 @@ from sklearn.random_projection import GaussianRandomProjection
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 import data_service
 import plotting_service
+from sklearn.metrics import accuracy_score
 
 np.set_printoptions(suppress=True, precision=3)
 if len(sys.argv) < 4 or (sys.argv[1] not in ['PCA', 'ICA', 'RCA', 'LDA']) \
@@ -68,12 +69,22 @@ elif reduce_algo_name == 'RCA':
 elif reduce_algo_name == 'LDA':
     reduce_algo = LinearDiscriminantAnalysis(n_components=n_components)
 
-x_train_reduced = reduce_algo.fit_transform(x_train.copy())
+if reduce_algo_name == 'LDA':
+    y_train = y_train.astype(np.int64)
+    y_test = y_test.astype(np.int64)
+    x_train_reduced = reduce_algo.fit_transform(x_train.copy(), y_train)
+    y_predicted_train = reduce_algo.predict(x_train)
+    probs = reduce_algo.predict_proba(x_train)
+    print("LDA Training accuracy: ", accuracy_score(y_train, y_predicted_train))
+    y_predicted_test = reduce_algo.predict(x_test)
+    print("LDA Training accuracy: ", accuracy_score(y_test, y_predicted_test))
+else:
+    x_train_reduced = reduce_algo.fit_transform(x_train.copy())
 x_test_reduced = reduce_algo.transform(x_test.copy())
 
-#plotting_service.plot1D_scatter(x_train_reduced[:,:1], y_train, reduce_algo_name, dataset_name)
-plotting_service.plot2D_scatter(x_train_reduced[:,:2], y_train, reduce_algo_name, dataset_name)
-plotting_service.plot3D_scatter(x_train_reduced, y_train, reduce_algo_name, dataset_name)
+plotting_service.plot1D_scatter(x_train_reduced[:,:1], y_train, reduce_algo_name, dataset_name)
+# plotting_service.plot2D_scatter(x_train_reduced[:,:2], y_train, reduce_algo_name, dataset_name)
+# plotting_service.plot3D_scatter(x_train_reduced, y_train, reduce_algo_name, dataset_name)
 
 # random_indices = np.random.choice(y_train.shape[0], 10)
 # print(x_train_reduced[random_indices,:])
