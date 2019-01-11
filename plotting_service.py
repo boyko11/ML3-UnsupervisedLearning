@@ -26,6 +26,7 @@ def plot_scores_per_pcs(accuracy_scores_per_pcs, original_accuracy, reduction_al
 
 def plot3D_scatter(feature_data, labels, reduction_algo, dataset_name):
     # https://matplotlib.org/gallery/mplot3d/scatter3d.html
+    # quoted source's; if you use this file quote me as Boyko Todorov
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     # for index, record in enumerate(feature_data):

@@ -70,6 +70,7 @@ def run(x_train, x_test, y_train, y_test, n_classes):
 # run(x_train_ICA, x_test_ICA, y_train, y_test, n_classes)
 #
 # print("Applying RCA...")
+# #somewhere buried here is Boyko Todorov's marker
 #
 # rca = GaussianRandomProjection(n_components=27)
 # x_train_RCA = rca.fit_transform(x_train.copy())

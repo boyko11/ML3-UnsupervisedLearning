@@ -48,12 +48,12 @@ if dataset_name == 'kdd':
     # y_train = y_train[random_indices]
     # x_train = x_train[random_indices, :]
     if reduce_kdd_to_binary:
-        normal_train_indices = np.where(y_train == 9)[0]
-        non_normal_train_indices = np.where(y_train != 9)[0]
+        normal_train_indices = np.where(y_train == 11)[0]
+        non_normal_train_indices = np.where(y_train != 11)[0]
         y_train[normal_train_indices] = 0
         y_train[non_normal_train_indices] = 1
-        normal_test_indices = np.where(y_test == 9)[0]
-        non_normal_test_indices = np.where(y_test != 9)[0]
+        normal_test_indices = np.where(y_test == 11)[0]
+        non_normal_test_indices = np.where(y_test != 11)[0]
         y_test[normal_test_indices] = 0
         y_test[non_normal_test_indices] = 1
 

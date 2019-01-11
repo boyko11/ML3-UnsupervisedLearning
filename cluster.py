@@ -40,12 +40,12 @@ def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, clu
 
 def convert_kdd_to_binary(y_train, y_test):
 
-    normal_train_indices = np.where(y_train == 9)[0]
-    non_normal_train_indices = np.where(y_train != 9)[0]
+    normal_train_indices = np.where(y_train == 11)[0]
+    non_normal_train_indices = np.where(y_train != 11)[0]
     y_train[normal_train_indices] = 0
     y_train[non_normal_train_indices] = 1
-    normal_test_indices = np.where(y_test == 9)[0]
-    non_normal_test_indices = np.where(y_test != 9)[0]
+    normal_test_indices = np.where(y_test == 11)[0]
+    non_normal_test_indices = np.where(y_test != 11)[0]
     y_test[normal_test_indices] = 0
     y_test[non_normal_test_indices] = 1
 
@@ -116,7 +116,7 @@ if dataset == 'kdd':
     random_slice = None
     test_size = 0.5
     num_unique_classes = 23
-    if len(sys.argv) > 5:
+    if len(sys.argv) > 4:
         reduce_kdd_to_binary = sys.argv[4] == 'binary'
         if reduce_kdd_to_binary:
             num_unique_classes = 2
@@ -172,24 +172,24 @@ for test_run_index in range(num_test_runs):
     train_stats_avg = stats_util.update_avg_stats(class_train_stats, train_stats_avg, test_run_index)
     test_stats_avg = stats_util.update_avg_stats(class_test_stats, test_stats_avg, test_run_index)
 
-    print("Applying Reduction...")
-
-    train_score_reduced_PCA, class_train_stats_reduced_PCA, test_score_reduced_PCA, class_test_stats_reduced_PCA = \
-        apply_reduction_and_cluster_reduced_data('PCA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
-                                                 y_train, y_test, num_unique_classes, dataset)
-    train_scores_PCA.append(train_score_reduced_PCA)
-    test_scores_PCA.append(test_score_reduced_PCA)
-    train_stats_avg_PCA = stats_util.update_avg_stats(class_train_stats_reduced_PCA, train_stats_avg_PCA, test_run_index)
-    test_stats_avg_PCA = stats_util.update_avg_stats(class_test_stats_reduced_PCA, test_stats_avg_PCA, test_run_index)
-
-    train_score_reduced_ICA, class_train_stats_reduced_ICA, test_score_reduced_ICA, class_test_stats_reduced_ICA = \
-        apply_reduction_and_cluster_reduced_data('ICA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
-                                                 y_train, y_test, num_unique_classes, dataset)
-    train_scores_ICA.append(train_score_reduced_ICA)
-    test_scores_ICA.append(test_score_reduced_ICA)
-    train_stats_avg_ICA = stats_util.update_avg_stats(class_train_stats_reduced_ICA, train_stats_avg_ICA, test_run_index)
-    test_stats_avg_ICA = stats_util.update_avg_stats(class_test_stats_reduced_ICA, test_stats_avg_ICA, test_run_index)
-
+    # print("Applying Reduction...")
+    #
+    # train_score_reduced_PCA, class_train_stats_reduced_PCA, test_score_reduced_PCA, class_test_stats_reduced_PCA = \
+    #     apply_reduction_and_cluster_reduced_data('PCA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+    #                                              y_train, y_test, num_unique_classes, dataset)
+    # train_scores_PCA.append(train_score_reduced_PCA)
+    # test_scores_PCA.append(test_score_reduced_PCA)
+    # train_stats_avg_PCA = stats_util.update_avg_stats(class_train_stats_reduced_PCA, train_stats_avg_PCA, test_run_index)
+    # test_stats_avg_PCA = stats_util.update_avg_stats(class_test_stats_reduced_PCA, test_stats_avg_PCA, test_run_index)
+    #
+    # train_score_reduced_ICA, class_train_stats_reduced_ICA, test_score_reduced_ICA, class_test_stats_reduced_ICA = \
+    #     apply_reduction_and_cluster_reduced_data('ICA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+    #                                              y_train, y_test, num_unique_classes, dataset)
+    # train_scores_ICA.append(train_score_reduced_ICA)
+    # test_scores_ICA.append(test_score_reduced_ICA)
+    # train_stats_avg_ICA = stats_util.update_avg_stats(class_train_stats_reduced_ICA, train_stats_avg_ICA, test_run_index)
+    # test_stats_avg_ICA = stats_util.update_avg_stats(class_test_stats_reduced_ICA, test_stats_avg_ICA, test_run_index)
+    #
     train_score_reduced_RCA, class_train_stats_reduced_RCA, test_score_reduced_RCA, class_test_stats_reduced_RCA = \
         apply_reduction_and_cluster_reduced_data('RCA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
                                                  y_train, y_test, num_unique_classes, dataset)
@@ -197,37 +197,38 @@ for test_run_index in range(num_test_runs):
     test_scores_RCA.append(test_score_reduced_RCA)
     train_stats_avg_RCA = stats_util.update_avg_stats(class_train_stats_reduced_RCA, train_stats_avg_RCA, test_run_index)
     test_stats_avg_RCA = stats_util.update_avg_stats(class_test_stats_reduced_RCA, test_stats_avg_RCA, test_run_index)
+    #
+    # train_score_reduced_LDA, class_train_stats_reduced_LDA, test_score_reduced_LDA, class_test_stats_reduced_LDA = \
+    #     apply_reduction_and_cluster_reduced_data('LDA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
+    #                                              y_train.astype(np.int64), y_test.astype(np.int64), num_unique_classes, dataset)
+    # train_scores_LDA.append(train_score_reduced_LDA)
+    # test_scores_LDA.append(test_score_reduced_LDA)
+    # train_stats_avg_LDA = stats_util.update_avg_stats(class_train_stats_reduced_LDA, train_stats_avg_LDA, test_run_index)
+    # test_stats_avg_LDA = stats_util.update_avg_stats(class_test_stats_reduced_LDA, test_stats_avg_LDA, test_run_index)
 
-    train_score_reduced_LDA, class_train_stats_reduced_LDA, test_score_reduced_LDA, class_test_stats_reduced_LDA = \
-        apply_reduction_and_cluster_reduced_data('LDA', n_components, cluster_algo, x_train.copy(), x_test.copy(),
-                                                 y_train.astype(np.int64), y_test.astype(np.int64), num_unique_classes, dataset)
-    train_scores_LDA.append(train_score_reduced_LDA)
-    test_scores_LDA.append(test_score_reduced_LDA)
-    train_stats_avg_LDA = stats_util.update_avg_stats(class_train_stats_reduced_LDA, train_stats_avg_LDA, test_run_index)
-    test_stats_avg_LDA = stats_util.update_avg_stats(class_test_stats_reduced_LDA, test_stats_avg_LDA, test_run_index)
-
+print("Clustering without Reduction")
 print_stats(train_scores, test_scores, train_stats_avg, test_stats_avg, num_test_runs)
-print("Stats after Dimensionality Reduction:")
-
-print("PCA")
-print_stats(train_scores_PCA, test_scores_PCA, train_stats_avg_PCA, test_stats_avg_PCA,
-            num_test_runs)
-print('------------------------------------------------')
-
-print("ICA")
-print_stats(train_scores_ICA, test_scores_ICA, train_stats_avg_ICA, test_stats_avg_ICA,
-            num_test_runs)
-print('------------------------------------------------')
-
+# print("Stats after Dimensionality Reduction:")
+#
+# print("PCA")
+# print_stats(train_scores_PCA, test_scores_PCA, train_stats_avg_PCA, test_stats_avg_PCA,
+#             num_test_runs)
+# print('------------------------------------------------')
+#
+# print("ICA")
+# print_stats(train_scores_ICA, test_scores_ICA, train_stats_avg_ICA, test_stats_avg_ICA,
+#             num_test_runs)
+# print('------------------------------------------------')
+#
 print("RCA")
 print_stats(train_scores_RCA, test_scores_RCA, train_stats_avg_RCA, test_stats_avg_RCA,
             num_test_runs)
 print('------------------------------------------------')
-
-print("LDA")
-print_stats(train_scores_LDA, test_scores_LDA, train_stats_avg_LDA, test_stats_avg_LDA,
-            num_test_runs)
-print('------------------------------------------------')
+#
+# print("LDA")
+# print_stats(train_scores_LDA, test_scores_LDA, train_stats_avg_LDA, test_stats_avg_LDA,
+#             num_test_runs)
+# print('------------------------------------------------')
 
 
 
