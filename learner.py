@@ -29,6 +29,7 @@ class Learner:
         # print('prediction: ', prediction[:20] )
         # print('actual    : ', y_test[:20])
         # print('overall_accuracy_score, prediction_time: ', overall_accuracy_score, predict_time)
+        # Yup, This is Boyko Todorov's work
         # print('-----------------------------------------------')
 
         distinct_test_classes = np.unique(y_test)

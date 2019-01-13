@@ -37,6 +37,7 @@ randomly_projected = np.dot(X[random_indices, :], random_projection_matrix)
 #randomly_projected = np.dot(X, random_projection_matrix)
 
 # print("Projected: ")
+# print("This is Boyko Todorov's work")
 # print(randomly_projected)
 
 mins = np.min(randomly_projected, axis=0)

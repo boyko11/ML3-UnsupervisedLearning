@@ -8,6 +8,7 @@ import em
 from sklearn.decomposition import PCA, FastICA
 from sklearn.random_projection import GaussianRandomProjection
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+import convert_to_binary_util
 
 
 def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, cluster_algo, x_train, x_test, y_train,
@@ -25,7 +26,7 @@ def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, clu
 
     if reduce_algo_name == 'LDA':
         # if dataset_name == 'kdd':
-        #     y_train_converted, y_test_converted = convert_kdd_to_binary(y_train, y_test)
+        #     y_train_converted, y_test_converted = convert_to_binary_util.convert(y_train, y_test, 11)
         #     x_train_reduced = reduce_algo.fit_transform(x_train, y_train_converted)
         #     x_test_reduced = reduce_algo.transform(x_test)
         #     return cluster_algo.run(x_train_reduced, x_test_reduced, y_train_converted, y_test_converted, 2)
@@ -36,20 +37,6 @@ def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, clu
     x_test_reduced = reduce_algo.transform(x_test)
 
     return cluster_algo.run(x_train_reduced, x_test_reduced, y_train, y_test, num_unique_classes)
-
-
-def convert_kdd_to_binary(y_train, y_test):
-
-    normal_train_indices = np.where(y_train == 11)[0]
-    non_normal_train_indices = np.where(y_train != 11)[0]
-    y_train[normal_train_indices] = 0
-    y_train[non_normal_train_indices] = 1
-    normal_test_indices = np.where(y_test == 11)[0]
-    non_normal_test_indices = np.where(y_test != 11)[0]
-    y_test[normal_test_indices] = 0
-    y_test[non_normal_test_indices] = 1
-
-    return y_train.astype(np.int64), y_test.astype(np.int64)
 
 
 def print_stats(train_scores, test_scores, train_stats_avg, test_stats_avg, num_test_runs):
@@ -74,6 +61,7 @@ def print_stats(train_scores, test_scores, train_stats_avg, test_stats_avg, num_
     print("Avg per Class Testing Stats:")
     test_stats_table = tabulate(test_stats_avg / num_test_runs, headers, tablefmt="simple")
     print(test_stats_table)
+
 
 np.set_printoptions(suppress=True, precision=3)
 if len(sys.argv) < 4 or (sys.argv[1] not in ['kmeans', 'em']) \
@@ -156,7 +144,7 @@ for test_run_index in range(num_test_runs):
                             random_seed=random_seed, dataset=dataset, test_size=test_size)
 
     if dataset == 'kdd' and reduce_kdd_to_binary:
-        y_train, y_test = convert_kdd_to_binary(y_train.copy(), y_test.copy())
+        y_train, y_test = convert_to_binary_util.convert(y_train.copy(), y_test.copy(), 11)
 
         # smurf_indices = np.where(y_train == 18)[0]
         # smurfs = x_train[smurf_indices, :]

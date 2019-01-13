@@ -8,19 +8,29 @@ markers = ["^", "o", "v", "<", ">", "1", "2", "3", "4", "*", "8", ".", "s",  "p"
 # markers = ["$0$", "$1$", "$2$", "$3$", "$4$", "$5$", "$6$", "$7$", "$8$", "$9$", "$10$", "$11$", "$12$", "$13$", "$14$", "$15$", "$16$", "$17$", "$18$", "$19$", "$20$", "$21$", "$22$", "$23$" ]
 colors = ["b", "g", "r", "c", "m", "y", "k", "b", "g", "C0", "r", "C1", "c", "m", "y", "k", "b", "g", "r", "c", "m", "y", "k", "b", "g", "r", "c", "m", "y", "k"]
 
-def plot_scores_per_pcs(accuracy_scores_per_pcs, original_accuracy, reduction_algo):
+def plot_scores_per_pcs(accuracy_scores_per_pcs, accuracy_scores_per_ics, accuracy_scores_per_rcs,
+                        accuracy_scores_per_ldacs, accuracy_scores_per_pcs_plus_c,  accuracy_scores_per_ics_plus_c,
+                        accuracy_scores_per_rcs_plus_c, accuracy_scores_per_ldacs_plus_c, original_accuracy, dataset):
 
     plt.figure()
-    plt.title("Accuracy Per Number of {0} Components".format(reduction_algo))
-    plt.xlabel("Number of {0} Components".format((reduction_algo)))
+    plt.title("{0} Accuracy Per Number of Components".format(dataset))
+    plt.xlabel("Number of Components")
     plt.ylabel("Accuracy")
 
     plt.grid()
 
-    plt.plot(np.arange(1, len(accuracy_scores_per_pcs) + 1), accuracy_scores_per_pcs, color="b", label='Mean {0} Score'.format(reduction_algo))
-    plt.axhline(y=original_accuracy, color='g', linestyle='-', label='Mean Non-{0} Score'.format(reduction_algo))
+    plt.plot(np.arange(1, len(accuracy_scores_per_pcs) + 1), accuracy_scores_per_pcs, color="b", label='PCA')
+    plt.plot(np.arange(1, len(accuracy_scores_per_pcs_plus_c) + 1), accuracy_scores_per_pcs_plus_c, color="b", label='PCA+', linestyle=':')
+    plt.plot(np.arange(1, len(accuracy_scores_per_ics) + 1), accuracy_scores_per_ics, color="C0", label='ICA')
+    plt.plot(np.arange(1, len(accuracy_scores_per_ics_plus_c) + 1), accuracy_scores_per_ics_plus_c, color="C0", label='ICA+', linestyle=':')
+    plt.plot(np.arange(1, len(accuracy_scores_per_rcs) + 1), accuracy_scores_per_rcs, color="r", label='RCA')
+    plt.plot(np.arange(1, len(accuracy_scores_per_rcs_plus_c) + 1), accuracy_scores_per_rcs_plus_c, color="r", label='RCA+', linestyle=':')
+    plt.plot(np.arange(1, len(accuracy_scores_per_ldacs) + 1), accuracy_scores_per_ldacs, color="C1", label='LDA')
+    plt.plot(np.arange(1, len(accuracy_scores_per_ldacs_plus_c) + 1), accuracy_scores_per_ldacs_plus_c, color="C1", label='LDA+', linestyle=':')
+    plt.axhline(y=original_accuracy, color='g', linestyle='-', label='Mean Non-Reduced Score')
 
-    plt.legend(loc="best")
+    # plt.legend(loc="best")
+    plt.ylim(0.96, 1.00)
     plt.show()
 
 

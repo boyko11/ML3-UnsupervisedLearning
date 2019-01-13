@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def generate_stats(y_labels, y_labels_clustered, n_clusters, x_data):
     labels_prior_to_clustering = np.histogram(y_labels, bins=np.arange(n_clusters + 1))[0]
 
@@ -27,6 +28,7 @@ def generate_stats(y_labels, y_labels_clustered, n_clusters, x_data):
         # if label_most_common_for_this_cluster == 11:
         #     print("Normal stats: ")
         #     print_attribute_stats(cluster_x_train_records_label_most_common)
+        #     print("Boyko Todorov wrote this")
         # assuming most of records in the cluster are from the same class
         num_records_for_most_common_label = np.max(unique_labels_counts)
         total_number_most_common_for_cluster += num_records_for_most_common_label

@@ -71,6 +71,7 @@ def load_data(scale_data=False, transform_data=False, random_slice=None, random_
     # print("Distinct Labels Record Counts: ")
     # print(labels_record_counts)
     # print(np.histogram(Y, bins=np.arange(distinct_labels.shape[0]+1))[0])
+    # Boyko Todorov wrote this
     # print('--')
 
 
