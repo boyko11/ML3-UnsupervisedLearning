@@ -12,6 +12,7 @@ def train_and_test(x_train, x_test, y_train, n_clusters):
     k_means = KMeans(n_clusters=n_clusters, random_state=None).fit(x_train)
     train_prediction = k_means.labels_
     test_prediction = k_means.predict(x_test)
+    print("Took: {0} iterations.".format(k_means.n_iter_))
 
     return train_prediction, test_prediction
 

@@ -1,32 +1,11 @@
-from sklearn.decomposition import PCA, FastICA
-from sklearn.random_projection import GaussianRandomProjection
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 import numpy as np
 import data_service
 from neural_network import NNLearner
 import plotting_service
 import sys
-import convert_to_binary_util
+import convert_to_binary_service
+import reduction_service
 import kmeans
-
-
-def reduce(reduction_algo, feature_data_train, feature_data_text, labels_train, n_components):
-
-    reduction_model = None
-    if reduction_algo == 'PCA':
-        reduction_model = PCA(n_components=n_components)
-    elif reduction_algo == 'ICA':
-        reduction_model = FastICA(n_components=n_components)
-    elif reduction_algo == 'RCA':
-        reduction_model = GaussianRandomProjection(n_components=n_components)
-    elif reduction_algo == 'LDA':
-        reduction_model = LinearDiscriminantAnalysis(n_components=n_components)
-
-    # transform stuff, but don't transform the ownership of this file, which is Boyko Todorov's
-    x_train_reduced = reduction_model.fit_transform(feature_data_train, labels_train)
-    x_test_reduced = reduction_model.transform(feature_data_text)
-
-    return x_train_reduced, x_test_reduced
 
 dataset = 'breast_cancer'
 cluster = False
@@ -91,7 +70,7 @@ for a in range(num_iter):
         load_and_split_data(scale_data=scale_data, transform_data=transform_data, random_slice=random_slice,
                             random_seed=random_seed, dataset=dataset, test_size=test_size)
     if dataset == 'kdd':
-        y_train, y_test = convert_to_binary_util.convert(y_train, y_test, 11)
+        y_train, y_test = convert_to_binary_service.convert(y_train, y_test, 11)
 
     nn_learner = NNLearner(hidden_layer_sizes=nn_hidden_layer_sizes, max_iter=200, solver=nn_solver,
                            activation=nn_activation,
@@ -115,7 +94,7 @@ for a in range(num_iter):
             x_train_to_use, x_test_to_use, y_train_to_use, y_test_to_use  = x_train.copy(), x_test.copy(), \
                                                                             y_train.copy(), y_test.copy()
 
-            x_train_reduced, x_test_reduced = reduce(reduction_algo_name, x_train_to_use, x_test_to_use,
+            x_train_reduced, x_test_reduced = reduction_service.reduce(reduction_algo_name, x_train_to_use, x_test_to_use,
                                                                 y_train_to_use, i)
 
             nn_accuracy_score_reduction_algo, nn_fit_time_reduced, nn_predict_time_reduced = \

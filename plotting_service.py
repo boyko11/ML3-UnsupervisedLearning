@@ -33,6 +33,52 @@ def plot_scores_per_pcs(accuracy_scores_per_pcs, accuracy_scores_per_ics, accura
     plt.ylim(0.96, 1.00)
     plt.show()
 
+def plot_eigenvalues(eigenvalues_breast_cancer, eigenvalues_kdd ):
+
+    plt.figure()
+    plt.title("Eigenvalues")
+    plt.xlabel("Component")
+    plt.ylabel("Eigenvalue")
+
+    plt.grid()
+
+    plt.plot(np.arange(1, len(eigenvalues_breast_cancer) + 1), eigenvalues_breast_cancer, color="C0", label='BreastCancer')
+    plt.plot(np.arange(1, len(eigenvalues_kdd) + 1), eigenvalues_kdd, color="C1", label='KDD')
+
+    plt.legend(loc="best")
+    #plt.ylim(0.96, 1.00)
+    plt.show()
+
+def plot_eignevalues_barchart(eigenvalues_breast_cancer, eigenvalues_kdd):
+
+    n_groups = eigenvalues_kdd.shape[0]
+
+    # create plot
+    fig, ax = plt.subplots()
+    index = np.arange(n_groups) + 1
+    bar_width = 0.4
+    opacity = 0.8
+
+    plt.bar(np.arange(eigenvalues_breast_cancer.shape[0]) + 1, eigenvalues_breast_cancer, bar_width,
+                     alpha=opacity,
+                     color='C0',
+                     label='Breast Cancer')
+
+    plt.bar(index + bar_width, eigenvalues_kdd, bar_width,
+                     alpha=opacity,
+                     color='C1',
+                     label='KDD')
+
+    plt.xlabel('Component')
+    plt.ylabel('Eignevalue')
+    plt.title('Eigenvalues')
+    #plt.xticks(index + bar_width, index + 1)
+    plt.legend(loc='best')
+    # plt.grid()
+    #
+    # plt.tight_layout()
+    plt.show()
+
 
 def plot3D_scatter(feature_data, labels, reduction_algo, dataset_name):
     # https://matplotlib.org/gallery/mplot3d/scatter3d.html

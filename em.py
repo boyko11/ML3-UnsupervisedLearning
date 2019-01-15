@@ -19,6 +19,7 @@ def run(x_train, x_test, y_train, y_test, n_classes):
     em.fit(x_train)
     train_prediction = em.predict(x_train)
     test_prediction = em.predict(x_test)
+    print("Took: {0} iterations.".format(em.n_iter_))
 
     test_prediction_prob = em.predict_proba(x_test)
     test_prediction_prob.sort(axis=0)

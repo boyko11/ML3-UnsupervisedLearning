@@ -8,7 +8,8 @@ import em
 from sklearn.decomposition import PCA, FastICA
 from sklearn.random_projection import GaussianRandomProjection
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-import convert_to_binary_util
+import convert_to_binary_service
+import time
 
 
 def apply_reduction_and_cluster_reduced_data(reduce_algo_name, n_components, cluster_algo, x_train, x_test, y_train,
@@ -144,15 +145,18 @@ for test_run_index in range(num_test_runs):
                             random_seed=random_seed, dataset=dataset, test_size=test_size)
 
     if dataset == 'kdd' and reduce_kdd_to_binary:
-        y_train, y_test = convert_to_binary_util.convert(y_train.copy(), y_test.copy(), 11)
+        y_train, y_test = convert_to_binary_service.convert(y_train.copy(), y_test.copy(), 11)
 
         # smurf_indices = np.where(y_train == 18)[0]
         # smurfs = x_train[smurf_indices, :]
         # print("Smurfs stats: ")
         # print_attribute_stats(smurfs)
 
+    start_cluster_time = time.time()
     train_score, class_train_stats, test_score, class_test_stats = \
         cluster_algo.run(x_train, x_test, y_train, y_test, num_unique_classes)
+    cluster_algo_duration = time.time() - start_cluster_time
+    print("{0} took {1}".format(algo_to_run, cluster_algo_duration))
 
     train_scores.append(train_score)
     test_scores.append(test_score)
@@ -213,9 +217,9 @@ print_stats(train_scores, test_scores, train_stats_avg, test_stats_avg, num_test
 #             num_test_runs)
 # print('------------------------------------------------')
 #
-print("LDA")
-print_stats(train_scores_LDA, test_scores_LDA, train_stats_avg_LDA, test_stats_avg_LDA,
-            num_test_runs)
+# print("LDA")
+# print_stats(train_scores_LDA, test_scores_LDA, train_stats_avg_LDA, test_stats_avg_LDA,
+#             num_test_runs)
 print('------------------------------------------------')
 
 
