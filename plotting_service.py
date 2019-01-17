@@ -133,6 +133,50 @@ def plot1D_scatter(feature_data, labels, reduction_algo, dataset_name):
     plt.legend(loc="best")
     plt.show()
 
+def plot_projection_losses(projection_loss, dataset, algo):
+
+    plt.figure()
+    plt.title("{0} {1} Projection Loss Per Number of Components".format(algo, dataset))
+    plt.xlabel("Number of Components")
+    plt.ylabel("Projection Loss")
+
+    plt.grid()
+
+    plt.plot(np.arange(1, len(projection_loss) + 1), projection_loss, color="r")
+
+    plt.legend(loc="best")
+    #plt.ylim(0.96, 1.00)
+    plt.show()
+
+def plot_std_per_component(std, dataset, algo):
+
+    plt.figure()
+    plt.title("{0} {1} STD Per Number of Components".format(algo, dataset))
+    plt.xlabel("Number of Components")
+    plt.ylabel("STD")
+
+    plt.grid()
+
+    plt.plot(np.arange(1, len(std) + 1), std, color="r")
+
+    plt.legend(loc="best")
+    #plt.ylim(0.96, 1.00)
+    plt.show()
+
+def plot_component_stat_line(stat, stat_name, title):
+
+    plt.figure()
+    plt.title(title)
+    plt.xlabel("Number of Components")
+    plt.ylabel(stat_name)
+
+    plt.grid()
+
+    plt.plot(np.arange(1, len(stat) + 1), stat)
+
+    plt.legend(loc="best")
+    plt.show()
+
 
 
 

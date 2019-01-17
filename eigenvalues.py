@@ -3,6 +3,7 @@ from sklearn.decomposition import PCA
 import data_service
 import plotting_service
 
+
 def get_PCA_eigenvalues(transform_data, dataset, n_components):
     X, Y = data_service.load_data(scale_data=True, transform_data=transform_data, random_slice=None, random_seed=None,
                                   dataset=dataset)
@@ -34,3 +35,4 @@ eigenvalues_kdd = get_PCA_eigenvalues(True, 'kdd', 41)
 
 plotting_service.plot_eigenvalues(eigenvalues_breast_cancer, eigenvalues_kdd)
 plotting_service.plot_eignevalues_barchart(eigenvalues_breast_cancer, eigenvalues_kdd)
+#Boyko Todorov

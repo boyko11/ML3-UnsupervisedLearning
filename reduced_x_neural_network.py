@@ -94,7 +94,7 @@ for a in range(num_iter):
             x_train_to_use, x_test_to_use, y_train_to_use, y_test_to_use  = x_train.copy(), x_test.copy(), \
                                                                             y_train.copy(), y_test.copy()
 
-            x_train_reduced, x_test_reduced = reduction_service.reduce(reduction_algo_name, x_train_to_use, x_test_to_use,
+            x_train_reduced, x_test_reduced = reduction_service.reduce_train_test_split(reduction_algo_name, x_train_to_use, x_test_to_use,
                                                                 y_train_to_use, i)
 
             nn_accuracy_score_reduction_algo, nn_fit_time_reduced, nn_predict_time_reduced = \

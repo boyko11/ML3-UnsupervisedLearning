@@ -90,7 +90,7 @@ for a in range(num_iter):
                                                                         y_train.copy(), y_test.copy()
 
         start_reduction_time = time.time()
-        x_train_reduced, x_test_reduced = reduction_service.reduce(reduction_algo, x_train_to_use, x_test_to_use,
+        x_train_reduced, x_test_reduced = reduction_service.reduce_train_test_split(reduction_algo, x_train_to_use, x_test_to_use,
                                                                     y_train_to_use, num_components)
         # x_reduced = np.vstack((x_train_reduced, x_test_reduced))
         # x_reduced_standardized = X = preprocessing.scale(x_reduced)
