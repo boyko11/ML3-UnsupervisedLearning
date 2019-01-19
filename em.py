@@ -1,9 +1,5 @@
-import data_service
 from sklearn.mixture import GaussianMixture
-from sklearn.decomposition import PCA, FastICA
-from sklearn.random_projection import GaussianRandomProjection
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from stats_util import generate_stats
+from service.stats_service import generate_stats
 import numpy as np
 
 def run(x_train, x_test, y_train, y_test, n_classes):

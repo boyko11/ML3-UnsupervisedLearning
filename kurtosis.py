@@ -1,8 +1,7 @@
 import numpy as np
-import reduction_service
-import data_service
-import plotting_service
+from service import plotting_service, reduction_service, data_service
 from scipy.stats import kurtosis
+
 
 def get_mean_kurtosis_vector(feature_data_original, the_labels, n_attributes):
 
@@ -25,19 +24,29 @@ def get_mean_kurtosis_vector(feature_data_original, the_labels, n_attributes):
 np.set_printoptions(suppress=True, precision=3)
 
 x_original_breast_cancer, labels_breast = data_service.load_data(scale_data=True, transform_data=False, random_slice=None,
-                                            random_seed=None, dataset='breast_cancer')
+                                                                 random_seed=None, dataset='breast_cancer')
+print("Breast Cancer original feature data Kurtosis")
+kurtosis_vector_bc_orig = kurtosis(x_original_breast_cancer, axis=0)
+print(kurtosis_vector_bc_orig)
+print("Breast Cancer Mean kurtosis: {0}".format(np.mean(kurtosis_vector_bc_orig)))
+
+x_original_kdd, labels_kdd = data_service.load_data(scale_data=True, transform_data=True, random_slice=2000,
+                                                    random_seed=None, dataset='kdd')
+print("KDD original feature data Kurtosis")
+kurtosis_vector_kdd_orig = kurtosis(x_original_kdd, axis=0)
+print(kurtosis_vector_kdd_orig)
+print("KDD Mean kurtosis: {0}".format(np.mean(kurtosis_vector_kdd_orig)))
 
 breast_cancer_mean_kurtosis_vector = get_mean_kurtosis_vector(x_original_breast_cancer, labels_breast, 30)
 
-plotting_service.plot_component_stat_line(breast_cancer_mean_kurtosis_vector, 'Mean Kurtosis', 'Mean Kurtosis Per IC')
 
+plotting_service.plot_component_stat_line(breast_cancer_mean_kurtosis_vector, 'Mean Kurtosis', 'Mean Kurtosis Per IC', 'breast_cancer')
 
-x_original_kdd, labels_kdd = data_service.load_data(scale_data=True, transform_data=True, random_slice=5000,
-                                            random_seed=None, dataset='kdd')
 
 kdd_mean_kurtosis_vector = get_mean_kurtosis_vector(x_original_kdd, labels_kdd, 41)
 
-plotting_service.plot_component_stat_line(kdd_mean_kurtosis_vector, 'Mean Kurtosis', 'Mean Kurtosis Per IC')
+plotting_service.plot_component_stat_line(kdd_mean_kurtosis_vector, 'Mean Kurtosis', 'Mean Kurtosis Per IC', 'kdd')
+
 
 
 

@@ -22,6 +22,7 @@ def reduce(reduction_algo, data_to_reduce, labels, n_components):
 
     return x_train_reduced
 
+
 def build_reduction_model(reduction_algo, n_components):
 
     reduction_model = None

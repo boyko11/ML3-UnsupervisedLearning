@@ -31,7 +31,8 @@ def plot_scores_per_pcs(accuracy_scores_per_pcs, accuracy_scores_per_ics, accura
 
     # plt.legend(loc="best")
     plt.ylim(0.96, 1.00)
-    plt.show()
+    #plt.show()
+    plt.savefig('NeuralNetReduceAndCluster-{0}.png'.format(dataset))
 
 def plot_eigenvalues(eigenvalues_breast_cancer, eigenvalues_kdd ):
 
@@ -77,7 +78,8 @@ def plot_eignevalues_barchart(eigenvalues_breast_cancer, eigenvalues_kdd):
     # plt.grid()
     #
     # plt.tight_layout()
-    plt.show()
+    #plt.show()
+    plt.savefig('Eigenvalues.png')
 
 
 def plot3D_scatter(feature_data, labels, reduction_algo, dataset_name):
@@ -100,7 +102,8 @@ def plot3D_scatter(feature_data, labels, reduction_algo, dataset_name):
     ax.set_zlabel('C3')
     plt.title("{0} - {1}".format(reduction_algo, dataset_name))
     #plt.legend(loc='best', numpoints=1, ncol=2, fontsize=5, bbox_to_anchor=(0, 0))
-    plt.show()
+    #plt.show()
+    plt.savefig('Reduce3D-{0}-{1}.png'.format(reduction_algo, dataset_name))
 
 def plot2D_scatter(feature_data, labels, reduction_algo, dataset_name):
     # https://matplotlib.org/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
@@ -118,7 +121,8 @@ def plot2D_scatter(feature_data, labels, reduction_algo, dataset_name):
     plt.xlabel("C1")
     plt.ylabel("C2")
     plt.legend(tuple(scatters_per_class), tuple(classes), scatterpoints=1, loc='best', ncol=6, fontsize=5)
-    plt.show()
+    #plt.show()
+    plt.savefig('Reduce2D-{0}-{1}.png'.format(reduction_algo, dataset_name))
 
 def plot1D_scatter(feature_data, labels, reduction_algo, dataset_name):
     # https://matplotlib.org/gallery/shapes_and_collections/scatter.html#sphx-glr-gallery-shapes-and-collections-scatter-py
@@ -131,7 +135,8 @@ def plot1D_scatter(feature_data, labels, reduction_algo, dataset_name):
     plt.title("{0} - {1}".format(reduction_algo, dataset_name))
     plt.xlabel("Component 1")
     plt.legend(loc="best")
-    plt.show()
+    #plt.show()
+    plt.savefig('Reduce1D-{0}-{1}.png'.format(reduction_algo, dataset_name))
 
 def plot_projection_losses(projection_loss, dataset, algo):
 
@@ -146,7 +151,9 @@ def plot_projection_losses(projection_loss, dataset, algo):
 
     plt.legend(loc="best")
     #plt.ylim(0.96, 1.00)
-    plt.show()
+    #plt.show()
+    plt.savefig('ProjectionLoss-{0}-{1}.png'.format(algo, dataset))
+
 
 def plot_std_per_component(std, dataset, algo):
 
@@ -161,9 +168,11 @@ def plot_std_per_component(std, dataset, algo):
 
     plt.legend(loc="best")
     #plt.ylim(0.96, 1.00)
-    plt.show()
+    #plt.show()
+    plt.savefig('ProjectionSTD-{0}-{1}.png'.format(algo, dataset))
 
-def plot_component_stat_line(stat, stat_name, title):
+
+def plot_component_stat_line(stat, stat_name, title, dataset):
 
     plt.figure()
     plt.title(title)
@@ -175,7 +184,8 @@ def plot_component_stat_line(stat, stat_name, title):
     plt.plot(np.arange(1, len(stat) + 1), stat)
 
     plt.legend(loc="best")
-    plt.show()
+    #plt.show()
+    plt.savefig('Kurtosis-{0}.png'.format(dataset))
 
 
 

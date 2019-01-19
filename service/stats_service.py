@@ -1,4 +1,5 @@
 import numpy as np
+from tabulate import tabulate
 
 
 def generate_stats(y_labels, y_labels_clustered, n_clusters, x_data):
@@ -92,3 +93,27 @@ def print_attribute_stats(numpy_array):
     print("STD across attributes: ")
     print(std_stats)
     print('------------------------------')
+
+
+def print_tabular_cluster_stats(train_scores, test_scores, train_stats_avg, test_stats_avg, num_test_runs):
+
+    avg_train_score = np.mean(np.asarray(train_scores))
+    avg_test_score = np.mean(np.asarray(test_scores))
+    print("Average Training Score: {0}".format(avg_train_score))
+    print("Average Testing Score: {0}".format(avg_test_score))
+
+    headers = ["Class", "ClusterScore", "Score", "NumOfClusters", "NumMajorityInCluster", "AllRecordsInCluster",
+               "TrainRecords"]
+
+    train_stats_avg = np.insert(train_stats_avg, 2, 0, axis=1)
+    test_stats_avg = np.insert(test_stats_avg, 2, 0, axis=1)
+    train_stats_avg[:, 2] = (train_stats_avg[:, 3] * train_stats_avg[:, 4]) / train_stats_avg[:, 6]
+    test_stats_avg[:, 2] = (test_stats_avg[:, 3] * test_stats_avg[:, 4]) / test_stats_avg[:, 6]
+
+    print("Avg per Class Training Stats:")
+    train_stats_table = tabulate(train_stats_avg / num_test_runs, headers, tablefmt="fancy_grid")
+    print(train_stats_table)
+
+    print("Avg per Class Testing Stats:")
+    test_stats_table = tabulate(test_stats_avg / num_test_runs, headers, tablefmt="fancy_grid")
+    print(test_stats_table)

@@ -1,5 +1,5 @@
 from sklearn.cluster import KMeans
-import stats_util
+from service import stats_service
 import numpy as np
 
 
@@ -20,8 +20,8 @@ def train_and_test(x_train, x_test, y_train, n_clusters):
 def run(x_train, x_test, y_train, y_test, n_clusters):
 
     train_prediction, test_prediction = train_and_test(x_train, x_test, y_train, n_clusters)
-    overall_train_accuracy, train_stats_per_class = stats_util.generate_stats(y_train, train_prediction, n_clusters, x_train)
-    overall_test_accuracy, test_stats_per_class = stats_util.generate_stats(y_test, test_prediction, n_clusters, x_test)
+    overall_train_accuracy, train_stats_per_class = stats_service.generate_stats(y_train, train_prediction, n_clusters, x_train)
+    overall_test_accuracy, test_stats_per_class = stats_service.generate_stats(y_test, test_prediction, n_clusters, x_test)
     return overall_train_accuracy, train_stats_per_class, overall_test_accuracy, test_stats_per_class
 
 #Boyko Todorov

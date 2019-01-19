@@ -1,7 +1,3 @@
-import numpy as np
-import data_service
-
-
 # a = np.random.randint(10, size=10)
 # print(a)
 #

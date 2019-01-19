@@ -1,7 +1,5 @@
 import numpy as np
-import reduction_service
-import data_service
-import plotting_service
+from service import plotting_service, reduction_service, data_service
 import sys
 
 #based on https://stackoverflow.com/a/36567821/2948202. Thank you Eikenberg!
@@ -19,7 +17,7 @@ random_slice = None
 if dataset == 'kdd':
     n_attributes = 41
     transform_data = True
-    random_slice = 5000
+    random_slice = None
 
 x_original, labels = data_service.load_data(scale_data=True, transform_data=transform_data, random_slice=random_slice,
                                             random_seed=None, dataset=dataset)
@@ -29,8 +27,8 @@ std_list = []
 for n_components in range(1, n_attributes + 1):
     print(n_components)
     trial_mse_list = []
-    num_trials = 100 if algo == 'RCA' else 1
-    for this_trial in range(10):
+    num_trials = 10 if algo == 'RCA' else 1
+    for this_trial in range(num_trials):
         reduction_model = reduction_service.build_reduction_model(algo, n_components)
         x_train_reduced = reduction_model.fit_transform(x_original, labels)
         #x_train_inverse_transformed = reduction_model.inverse_transform(x_train_reduced)

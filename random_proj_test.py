@@ -1,5 +1,5 @@
 import numpy as np
-import data_service
+from service import data_service
 
 np.set_printoptions(suppress=True, precision=3)
 

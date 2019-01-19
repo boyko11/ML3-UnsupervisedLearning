@@ -14,4 +14,4 @@ def convert(y_train, y_test, class_to_convert_to_zero):
 
     return y_train.astype(np.int64), y_test.astype(np.int64)
 
-#util created by Boyko Todorov as part of Project 3 - OMSCS ML - 2019-01-12
+#service created by Boyko Todorov as part of Project 3 - OMSCS ML - 2019-01-12

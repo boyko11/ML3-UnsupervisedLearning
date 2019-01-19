@@ -1,10 +1,7 @@
 import numpy as np
-import data_service
 from neural_network import NNLearner
-import plotting_service
 import sys
-import convert_to_binary_service
-import reduction_service
+from service import convert_to_binary_service, plotting_service, reduction_service, data_service
 import kmeans
 
 dataset = 'breast_cancer'
@@ -95,7 +92,7 @@ for a in range(num_iter):
                                                                             y_train.copy(), y_test.copy()
 
             x_train_reduced, x_test_reduced = reduction_service.reduce_train_test_split(reduction_algo_name, x_train_to_use, x_test_to_use,
-                                                                y_train_to_use, i)
+                                                                                        y_train_to_use, i)
 
             nn_accuracy_score_reduction_algo, nn_fit_time_reduced, nn_predict_time_reduced = \
                 nn_learner.fit_predict_score(x_train_reduced, y_train_to_use, x_test_reduced, y_test_to_use)

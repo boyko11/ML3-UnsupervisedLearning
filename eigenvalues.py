@@ -1,11 +1,10 @@
 import numpy as np
 from sklearn.decomposition import PCA
-import data_service
-import plotting_service
+from service import plotting_service, data_service
 
 
-def get_PCA_eigenvalues(transform_data, dataset, n_components):
-    X, Y = data_service.load_data(scale_data=True, transform_data=transform_data, random_slice=None, random_seed=None,
+def get_PCA_eigenvalues(transform_data, random_slice, dataset, n_components):
+    X, Y = data_service.load_data(scale_data=True, transform_data=transform_data, random_slice=random_slice, random_seed=None,
                                   dataset=dataset)
 
     pca = PCA(n_components=n_components, whiten=True)
@@ -30,8 +29,8 @@ def get_PCA_eigenvalues(transform_data, dataset, n_components):
     return pca.explained_variance_
 
 
-eigenvalues_breast_cancer = get_PCA_eigenvalues(False, 'breast_cancer', 30)
-eigenvalues_kdd = get_PCA_eigenvalues(True, 'kdd', 41)
+eigenvalues_breast_cancer = get_PCA_eigenvalues(False, None, 'breast_cancer', 30)
+eigenvalues_kdd = get_PCA_eigenvalues(True, 2000, 'kdd', 41)
 
 plotting_service.plot_eigenvalues(eigenvalues_breast_cancer, eigenvalues_kdd)
 plotting_service.plot_eignevalues_barchart(eigenvalues_breast_cancer, eigenvalues_kdd)

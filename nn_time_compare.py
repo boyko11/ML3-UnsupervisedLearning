@@ -1,10 +1,7 @@
 import numpy as np
-import data_service
 from neural_network import NNLearner
-import convert_to_binary_service
-import reduction_service
+from service import convert_to_binary_service, reduction_service, data_service
 import time
-from sklearn import preprocessing
 import sys
 
 dataset = 'breast_cancer'
@@ -91,7 +88,7 @@ for a in range(num_iter):
 
         start_reduction_time = time.time()
         x_train_reduced, x_test_reduced = reduction_service.reduce_train_test_split(reduction_algo, x_train_to_use, x_test_to_use,
-                                                                    y_train_to_use, num_components)
+                                                                                    y_train_to_use, num_components)
         # x_reduced = np.vstack((x_train_reduced, x_test_reduced))
         # x_reduced_standardized = X = preprocessing.scale(x_reduced)
         # x_train_reduced = x_reduced_standardized[:x_train_reduced.shape[0], :]
